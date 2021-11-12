@@ -1,0 +1,229 @@
+<div class="outer">
+    <div class="inner">
+        <div class="refl"></div>
+    </div>
+</div>
+<div class="shadow"></div>
+<style>
+    body {
+        background-color: #333;
+        animation: hue 3s alternate-reverse infinite ease-in-out;
+        background: rgb(255, 255, 255);
+        background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(17, 17, 17, 1) 60%);
+    }
+
+    .shadow {
+        z-index: 0;
+        border-top-left-radius: 100px;
+        border-bottom-right-radius: 100px;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        transform-style: preserve-3d;
+        background-color: rgb(27, 27, 27);
+        box-shadow: 0px 0px 10px black;
+
+        animation: shadow 3s alternate-reverse infinite ease-in-out;
+    }
+
+    /*gradient + black part*/
+    .outer {
+        z-index: 1;
+        filter: drop-shadow(-10px 10px 10px green) blur(.3px);
+        border-top-left-radius: 100px;
+        border-bottom-right-radius: 100px;
+        animation: movement 3s alternate-reverse infinite ease-in-out;
+        width: 200px;
+        height: 200px;
+        background: rgb(255, 255, 255);
+        background: linear-gradient(140deg, rgba(255, 255, 255, 1) 0%, rgba(17, 17, 17, 1) 50%);
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        transform-style: preserve-3d;
+        outline: 1px solid #555;
+        outline-offset: -10px;
+        box-shadow:
+            -8px -12px 0px -12px #fff,
+
+            -3px 3px 0 #010,
+            -4px 4px 0 #020,
+            -5px 5px 0 #030,
+            -6px 6px 0 #040,
+            -7px 7px 0 #050,
+            -8px 8px 0 #060,
+            -9px 9px 0 #070,
+            -10px 10px 0 #080,
+            -11px 11px 0 #090,
+            -13px 12px 0 #0a0,
+            -13px 13px 0 #0b0,
+            -14px 14px 0 #0c0,
+            -15px 15px 0 #0d0,
+            -16px 16px 0 #0e0,
+            -17px 17px 0 #0f0,
+            -18px 18px 0 #0f1,
+            -19px 19px 0 #0f2;
+    }
+
+    /*eye background*/
+    .outer::after {
+        content: ' ';
+        position: absolute;
+        inset: 0px;
+        background-color: rgb(14, 54, 24);
+        width: 150px;
+        height: 100px;
+        border-top-left-radius: 100px;
+        border-bottom-right-radius: 100px;
+        transform: rotateZ(-10deg) translateX(15%) translateY(50%);
+        box-shadow:
+            0px 4px 0px 3px #444,
+            0px 7px 0px 10px #333,
+            inset 0 10px 15px 0px black;
+    }
+
+    /*eye grey background 1*/
+    .outer::before {
+        content: ' ';
+        position: absolute;
+        inset: 0px;
+        background-color: #333;
+        width: 250px;
+        height: 250px;
+        border-top-left-radius: 1000px;
+        border-bottom-right-radius: 1000px;
+        box-shadow: 0px 0px 0px 5px #444;
+        transform: translateX(-10%) translateY(-10%) scale(.65);
+
+    }
+
+    /*pupil background*/
+    .inner {
+        z-index: 2;
+        position: absolute;
+        transform-style: preserve-3d;
+        inset: 0;
+        width: 80px;
+        height: 80px;
+        background-color: rgb(147, 196, 137);
+        border-radius: 100px;
+        transform: translateX(70%) translateY(80%);
+        animation: eyeMovement 10s infinite alternate ease-in-out;
+        box-shadow:
+            0 0 10px black,
+            0 0 0 1px black,
+            -1px -2px 3px 1px black
+    }
+
+    /*pupil*/
+    .inner::after {
+        z-index: 3;
+        content: ' ';
+        position: absolute;
+        inset: 0px;
+        background-color: rgb(76, 32, 105);
+        width: 40px;
+        height: 40px;
+        border-top-right-radius: 100px;
+        border-bottom-left-radius: 100px;
+        transform: translateX(50%) translateY(50%);
+        box-shadow: 0 0 10px rgb(255, 0, 179);
+    }
+
+    /*pupil big spot*/
+    .inner::before {
+        z-index: 6;
+        content: ' ';
+        position: absolute;
+        inset: 0px;
+        background-color: #fff;
+        width: 20px;
+        height: 20px;
+        border-radius: 100px;
+        transform: translateX(35%) translateY(170%);
+        box-shadow: 0 0 10px #fff;
+    }
+
+    /*pupil medium spot*/
+    .refl {
+        z-index: 6;
+        position: absolute;
+        inset: 0px;
+        background-color: #fff;
+        width: 10px;
+        height: 10px;
+        border-radius: 100px;
+        transform: translateX(265%) translateY(510%);
+        box-shadow: 0 0 10px #fff;
+    }
+
+    /*pupil smal spot*/
+    .refl::after {
+        z-index: 6;
+        content: ' ';
+        position: absolute;
+        inset: 0px;
+        background-color: #fff;
+        width: 5px;
+        height: 5px;
+        border-radius: 100px;
+        transform: translateX(30%) translateY(-150%);
+        box-shadow: 0 0 10px #fff;
+    }
+
+
+    @keyframes movement {
+        0% {
+            transform: translateY(0%) rotate3d(0, 0, 1, 45deg);
+        }
+
+        100% {
+            transform: translateY(-50%) rotate3d(0, 0, 1, 45deg);
+        }
+    }
+
+    @keyframes shadow {
+        0% {
+            transform: rotateX(80deg) rotateZ(60deg) translateX(180%) translateY(130%) scale(1);
+        }
+
+        100% {
+            transform: rotateX(80deg) rotateZ(60deg) translateX(180%) translateY(130%) scale(1.2);
+        }
+    }
+
+    @keyframes eyeMovement {
+        0% {
+            transform: translateX(70%) translateY(75%);
+        }
+
+        20% {
+            transform: translateX(80%) translateY(73%);
+        }
+
+        40% {
+            transform: translateX(74%) translateY(79%);
+        }
+
+        60% {
+            transform: translateX(79%) translateY(78%);
+        }
+
+        80% {
+            transform: translateX(69%) translateY(77%);
+        }
+
+        100% {
+            transform: translateX(70%) translateY(73%);
+        }
+    }
+
+    @keyframes hue {
+        100% {
+            filter: hue-rotate(360deg);
+        }
+    }
+
+</style>
